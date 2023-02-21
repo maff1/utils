@@ -1,6 +1,13 @@
 #!/usr/bin/env Rscript
 
-install.packages(setdiff(c("optparse", "dplyr", "openxlsx"), rownames(installed.packages())))
+setUser = Sys.info()[["user"]]
+LibDir = paste0("C:\\Users\\", setUser, "\\AppData\\Local\\R\\win-library\\4.2")
+if(!dir.exists(LibDir)) {dir.create(LibDir)}
+
+install.packages(setdiff(c("optparse", "dplyr", "openxlsx"), rownames(installed.packages())),
+lib=LibDir,
+repos="https://cran.ma.imperial.ac.uk",
+dependencies=TRUE)
 
 library("optparse")
 library("dplyr")
