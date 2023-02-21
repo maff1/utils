@@ -1,6 +1,10 @@
 #!/usr/bin/env Rscript
+
+install.packages(setdiff(c("optparse", "dplyr", "openxlsx"), rownames(installed.packages())))
+
 library("optparse")
 library("dplyr")
+library("openxlsx")
 
 option_list = list(
   make_option(c("-d", "--dir"), type="character", default=NULL,
@@ -11,7 +15,6 @@ option_list = list(
 
 opt_parser = OptionParser(option_list=option_list)
 opt = parse_args(opt_parser)
-
 
 if (is.null(opt$dir)){
   print_help(opt_parser)
