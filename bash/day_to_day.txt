@@ -1,0 +1,4 @@
+# archive and compress with gz
+tar -czvf my_dir.tar.gz my_dir/
+# slurm sbatch in-line tar and pigz
+sbatch --partition=short --ntasks=4 --mem=6GB --time=00:30:00 --wrap="tar --use-compress-program=\"pigz -k -3 \" -cf my_dir.tar.gz my_dir/"
